@@ -17,7 +17,7 @@
                     <td>{{user.email}}</td>
                     <td>
                         <inertia-link :href="route('users.edit',user.id)">Editar</inertia-link>
-                        <button>Delete</button>
+                        <button type="button" @click="excluir(user.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -31,6 +31,12 @@ export default {
     components:{AppLayout},
     props:{
         users: Object
+    },
+    methods:{
+        excluir(id){
+            console.log(id);
+            this.$inertia.delete('/users/${id}')
+        }
     }
 }
 </script>
